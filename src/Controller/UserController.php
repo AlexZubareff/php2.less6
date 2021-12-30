@@ -16,11 +16,19 @@ class UserController extends AbstractController
 
     public function showUser(int $id, UserRepository $userRepository): Response
     {
+        //получаем пользователя по ID
         $user = $userRepository->find($id);
-        return new Response('User Age: ' .$user->getAge());
+        // выводим все ID и Path всех фото которые есть у пользователя
+        foreach ($user->getPhoto() as $photo) {
+            echo('Photo ID : ' . $photo->getPhotoId()).PHP_EOL;
+            echo('Photo Path : ' . $photo->getParth()).PHP_EOL;
+
+        }
+        return new Response();
 
     }
 
+// создаем нового пользователя и добавляем в БД
     public function createUser(ManagerRegistry $doctrine): Response
     {
 $entityManager = $doctrine->getManager();

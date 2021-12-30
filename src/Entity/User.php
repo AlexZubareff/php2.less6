@@ -35,7 +35,6 @@ class User
     public function __construct()
     {
         $this->photo = new ArrayCollection();
-        $this->userphoto = new ArrayCollection();
     }
 
     public function getId(): ?int
